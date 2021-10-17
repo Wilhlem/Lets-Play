@@ -1,9 +1,12 @@
 let xBall;
 let yBall;
+
 let xSpeed = 2;
-let ySpeed = 7;
+let ySpeed = 5;
 let score = 0
-let d = 30
+let d = 20
+
+//let triangle = (xBall,yBall,xBall+d,yBall,xBall+d/2,yBall+d)
 
 let mybg = {
   h: 0,
@@ -25,26 +28,38 @@ function draw() {
   background(color(mybg.h, mybg.s, mybg.l));
   fill(color(mybg.h+180, mybg.s, mybg.l))
   noStroke();
-  //circle(xBall, yBall ,d)
+  circle(xBall, yBall ,d)
   
   // Score
   textSize(48);
   textFont('Breitkopf FrakturUNZ1L');
   text("Score: " + score, 15, 45);
 
-  // Cursor
-  rect(mouseX,windowHeight-20, 100, 10);
-  ellipse(mouseX+5,windowHeight-10, 10, 15);
-  ellipse(mouseX+95,windowHeight-10, 10, 15);
+  // Cursor BOTTOM
+  rect(mouseX,windowHeight-50, 100, 10);
+  triangle(mouseX,windowHeight-40, mouseX+10,windowHeight-40, mouseX+5,windowHeight-60);
+  triangle(mouseX+90,windowHeight-40, mouseX+100,windowHeight-40, mouseX+95,windowHeight-60);
+
+  // Cursor TOP
+  rect(mouseX,80, 100, 10);
+  triangle(mouseX,80, mouseX+10,80, mouseX+5,100);
+  triangle(mouseX+90,80, mouseX+100,80, mouseX+95,100);
   
   // Ball
-  circle(xBall, yBall, d);
-
+  if (mouseIsPressed) {
+    fill(color(mybg.h, mybg.s, mybg.l))
+    //strokeWeight(5)
+    circle(xBall, yBall, d/2);
+  }else{
+    noStroke()
+    circle(xBall, yBall, d);
+  }
+  //triangle = (xBall,yBall,xBall+d,yBall,xBall+d/2,yBall+d)
+ 
   xBall += xSpeed;
   yBall += ySpeed; 
 
-
-
+  //Bouncing 
   if(xBall > windowWidth-d/2 || xBall < d/2){
     xSpeed *= -1;
     console.log(xSpeed);
@@ -53,8 +68,19 @@ function draw() {
   if(yBall > windowHeight-d/2 || yBall < d/2){
     ySpeed *= -1;
     console.log(ySpeed);
-  } 
+  }
   
+  /* Colliding 
+  if(xBall >= mouseX+10 || xBall <= mouseX+90){
+    xSpeed *= -1;
+    //console.log(xSpeed);
+  } 
+
+  if(yBall >= 100 || yBall <= windowHeight-40){
+    ySpeed *= -1;
+    //console.log(ySpeed);
+  } */
+
 
   // TO DO 1: Bringe den Balken dazu der Maus auf der x-Achse zu folgen.
 
