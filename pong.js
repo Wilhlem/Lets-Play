@@ -82,6 +82,7 @@ function draw() {
   } */
 
 
+
   // TO DO 1: Bringe den Balken dazu der Maus auf der x-Achse zu folgen.
 
   // TO DO 2: Schaffst du es, dass sich der Ball frei bewegt?
