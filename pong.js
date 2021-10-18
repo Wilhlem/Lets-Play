@@ -70,14 +70,24 @@ function draw() {
     console.log(ySpeed);
   }
   
-  /* Colliding 
-  if(xBall >= mouseX+10 || xBall <= mouseX+90){
+  // Colliding 
+  /*if(xBall >= mouseX+10 || xBall <= mouseX+90){
     xSpeed *= -1;
     //console.log(xSpeed);
   } 
 
-  if(yBall >= 100 || yBall <= windowHeight-40){
+  if(yBall > windowHeight-60 || yBall < 100){
     ySpeed *= -1;
     //console.log(ySpeed);
   } */
+
+
+  // TO DO 1: Bringe den Balken dazu der Maus auf der x-Achse zu folgen.
+  
+  // TO DO 2: Schaffst du es, dass sich der Ball frei bewegt?
+
+  // TO DO 3: Lass den Ball von den Seitenrändern abprallen (windowWidth/windowHeight)
+
+  // TO DO 4: Lass den Ball vom Balken aprallen, falls sie sich berühren
+
 }
