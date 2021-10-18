@@ -1,12 +1,9 @@
 let xBall;
 let yBall;
-
 let xSpeed = 2;
 let ySpeed = 5;
-let score = 0
-let d = 20
-
-//let triangle = (xBall,yBall,xBall+d,yBall,xBall+d/2,yBall+d)
+let score = 0;
+let d = 20;
 
 let mybg = {
   h: 0,
@@ -35,7 +32,52 @@ function draw() {
   textFont('Breitkopf FrakturUNZ1L');
   text("Score: " + score, 15, 45);
 
-  // Cursor BOTTOM
+  // Cursor
+
+
+  
+  // function CURSOR
+  function cursor(){
+    beginShape();
+    rect(mouseX, windowHeight-50, 100, 10);
+    triangle(mouseX,windowHeight-40, mouseX+10,windowHeight-40, mouseX+5,windowHeight-60);
+    triangle(mouseX+90,windowHeight-40, mouseX+100,windowHeight-40, mouseX+95,windowHeight-60);
+    endShape(CLOSE);
+  }
+
+
+  
+  //Heart
+  if (mouseIsPressed) {
+    //fill(color(mybg.h180, mybg.s, mybg.l))
+    heart (xBall, yBall-d/2, (3/2) * d)
+  }else{
+    circle (xBall, yBall, d);
+  }
+
+  //Function HEART
+  function heart (x,y,size){
+    beginShape();
+     vertex(x,y);
+     bezierVertex(x - size/3, y - size/3, x - size, y + size/10, x, y + size);
+     bezierVertex(x + size, y + size/10, x + size/3, y - size/3, x, y);
+     endShape(CLOSE);
+   }
+
+   xBall += xSpeed;
+   yBall += ySpeed; 
+ 
+   // Bounce off Cursor
+ function cursor() {
+   if ((xBall > mouseX || xBall < mouseX + 90) || (yBall + 10 >= 375)) {
+     xSpeed *= -1;
+     ySpeed *= -1;
+     score++;
+   }
+ 
+
+  /*
+   // Cursor BOTTOM
   rect(mouseX,windowHeight-50, 100, 10);
   triangle(mouseX,windowHeight-40, mouseX+10,windowHeight-40, mouseX+5,windowHeight-60);
   triangle(mouseX+90,windowHeight-40, mouseX+100,windowHeight-40, mouseX+95,windowHeight-60);
@@ -44,8 +86,8 @@ function draw() {
   rect(mouseX,80, 100, 10);
   triangle(mouseX,80, mouseX+10,80, mouseX+5,100);
   triangle(mouseX+90,80, mouseX+100,80, mouseX+95,100);
-  
-  // Ball
+
+   //BALL
   if (mouseIsPressed) {
     fill(color(mybg.h, mybg.s, mybg.l))
     //strokeWeight(5)
@@ -55,11 +97,9 @@ function draw() {
     circle(xBall, yBall, d);
   }
   //triangle = (xBall,yBall,xBall+d,yBall,xBall+d/2,yBall+d)
- 
-  xBall += xSpeed;
-  yBall += ySpeed; 
-
-  //Bouncing 
+  
+  
+  //Bouncing
   if(xBall > windowWidth-d/2 || xBall < d/2){
     xSpeed *= -1;
     console.log(xSpeed);
@@ -80,4 +120,5 @@ function draw() {
     ySpeed *= -1;
     //console.log(ySpeed);
   } */
+
 }
