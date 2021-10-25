@@ -1,9 +1,11 @@
 function setup() {
     createCanvas(720, 400);
+    noStroke()
+    colorMode(HSL)
   }
   
   function draw() {
-    background(102);
+    background(300,100,100);
   
     push();
     translate(width * 0.2, height * 0.5);
